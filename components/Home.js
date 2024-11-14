@@ -1,120 +1,98 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Button, TouchableOpacity, FlatList, CheckBox, Linking } from 'react-native';
-import tailwind from 'tailwind-rn'; 
-import { BarCodeScanner } from 'expo-barcode-scanner'; 
+// // import {View, Button, Stylesheet} from 'react-native';
+// // import react from 'react';
+// // import { useNavigation } from '@react-navigation/native';
+// // export default function Home(){
+// //     const navigation = useNavigation();
+// //     return(
+// //         <view Style = {Stylesheet.container}> <Button title='Scan' onPress = {() => navigation.navigate('Scanner')}/>
+        
+// //         </view>
+
+// //     );
+// // }
+// // const Style = Stylesheet.create({
+// //     container : {
+// //         flex : 1,
+// //         backgroundColor: '#fff',
+// //         alignItems: 'Center',
+// //         justfyContent: 'center',
+// //     }
+// // });
+// import React from 'react';
+// import { View, Button } from 'react-native';
+// import tailwind from 'tailwind-rn'; // Import tailwind-rn
+// import { useNavigation } from '@react-navigation/native';
+
+// export default function Home() {
+//     const navigation = useNavigation();
+
+//     return (
+//         <View style={tailwind('flex-1 bg-white items-center justify-center')}>
+//             <Button
+//                 title='Scan'
+//                 onPress={() => navigation.navigate('Scanner')}
+//             />
+//         </View>
+//     );
+// }
+import React, { useState } from 'react';
+import { View, Text, TextInput, FlatList, Button } from 'react-native';
+import tailwind from 'tailwind-rn'; // Import Tailwind for styling
 import { useNavigation } from '@react-navigation/native';
 
+// Example student data
+const students = [
+  { id: '1', name: 'Daniel Medson' },
+  { id: '2', name: 'Samuel Chihana' },
+  { id: '3', name: 'Pleasant Ainan' },
+  { id: '4', name: 'Ronald Longwe' },
+  { id: '5', name: 'Walunji Kumwenda' },
+  { id: '6', name: 'Chipulumutso phiri' },
+];
+
 export default function Home() {
-    const navigation = useNavigation();
-    const [hasPermission, setPermission] = useState(null);
-    const [scanned, setScanned] = useState(false);
-    const [searchQuery, setSearchQuery] = useState('');
-    const [showStudentList, setShowStudentList] = useState(false);
-    const [students, setStudents] = useState([
-        { id: '1', name: 'Daniel Medson', regNo: '12345', selected: false },
-        { id: '2', name: 'Pleasant Ainan', regNo: '67890', selected: false },
-        { id: '3', name: 'Ronald Longwe', regNo: '11223', selected: false },
-        { id: '4', name: 'Samuel Chihanas', regNo: '44556', selected: false },
-    ]);
-    const [currentStudentId, setCurrentStudentId] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filteredStudents, setFilteredStudents] = useState(students);
+  const navigation = useNavigation();
 
-    useEffect(() => {
-        (async () => {
-            const { status } = await BarCodeScanner.requestPermissionsAsync();
-            setPermission(status === 'granted');
-        })();
-    }, []);
-
-    const handleBarCodeScanned = ({ type, data }) => {
-        setScanned(true);
-        alert(`Bar Code with type ${type} and data ${data} has been scanned`);
-        Linking.openURL(data);
-    };
-
-    const toggleStudentList = () => {
-        setShowStudentList(prev => !prev);
-    };
-
-    const handleCheckboxChange = (id) => {
-        setStudents(prevStudents =>
-            prevStudents.map(student =>
-                student.id === id ? { ...student, selected: !student.selected } : student
-            )
-        );
-    };
-
-    const handleSearchChange = (text) => {
-        setSearchQuery(text);
-    };
-
-    const filteredStudents = students.filter(student => 
-        student.name.toLowerCase().includes(searchQuery.toLowerCase())
+  // Handle search input
+  const handleSearch = (text) => {
+    setSearchTerm(text);
+    setFilteredStudents(
+      students.filter(student =>
+        student.name.toLowerCase().includes(text.toLowerCase())
+      )
     );
+  };
 
-    if (hasPermission === null) {
-        return <Text style={tailwind('text-lg text-center')}>Requesting camera permission...</Text>;
-    }
+  return (
+    <View style={tailwind('flex-1 bg-white p-4')}>
+      {/* Search Bar */}
+      <TextInput
+        style={tailwind('border border-gray-300 rounded-md p-2 mb-4')}
+        placeholder="Search students..."
+        value={searchTerm}
+        onChangeText={handleSearch}
+      />
 
-    if (hasPermission === false) {
-        return <Text style={tailwind('text-lg text-center')}>No access to camera</Text>;
-    }
+      {/* Student List */}
+      <Text style={tailwind('text-lg font-semibold mb-2')}>Student List</Text>
+      <FlatList
+        data={filteredStudents}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <View style={tailwind('p-2 border-b border-gray-200')}>
+            <Text style={tailwind('text-md')}>{item.name}</Text>
+          </View>
+        )}
+      />
 
-    return (
-        <View style={tailwind('flex-1 bg-white justify-between')}>
-        
-            <View style={tailwind('mx-4 mt-10')}>
-                <TextInput
-                    style={tailwind('border p-2 rounded-md')}
-                    placeholder="Search for a student"
-                    value={searchQuery}
-                    onChangeText={handleSearchChange}
-                />
-            </View>
-
-        
-            <View style={tailwind('mt-6 mx-4')}>
-                <TouchableOpacity onPress={toggleStudentList} style={tailwind('flex-row items-center')}>
-                    <Text style={tailwind('text-xl font-bold mr-2')}>Student List</Text>
-                    <Text style={tailwind('text-lg')}>{showStudentList ? '▲' : '▼'}</Text>
-                </TouchableOpacity>
-                {showStudentList && (
-                    <FlatList
-                        data={filteredStudents}
-                        renderItem={({ item }) => (
-                            <View style={tailwind('flex-row items-center p-2 border-b')}>
-                                <CheckBox
-                                    value={item.selected}
-                                    onValueChange={() => handleCheckboxChange(item.id)}
-                                    style={tailwind('mr-2')}
-                                />
-                                <Text style={tailwind('flex-1')}>{item.name}</Text>
-                                <Text style={tailwind('mr-2')}>Reg: {item.regNo}</Text>
-                            </View>
-                        )}
-                        keyExtractor={item => item.id}
-                    />
-                )}
-            </View>
-
-            
-            <View style={tailwind('mx-4 mt-6')}>
-                <TouchableOpacity
-                    style={tailwind('bg-blue-500 p-3 rounded-md')}
-                    onPress={() => navigation.navigate('Scanner')}>
-                    <Text style={tailwind('text-white text-center text-xl')}>Scan QR Code</Text>
-                </TouchableOpacity>
-            </View>
-
-            
-            {scanned && (
-                <View style={tailwind('flex-1 justify-center items-center')}>
-                    <BarCodeScanner
-                        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-                        style={tailwind('absolute top-0 left-0 right-0 bottom-0')}
-                    />
-                    <Text style={tailwind('text-white text-lg')}>Scanning...</Text>
-                </View>
-            )}
-        </View>
-    );
+      {/* QR Scanner Button */}
+      <Button
+        title="Go to QR Scanner"
+        onPress={() => navigation.navigate('Scanner')}
+      />
+    </View>
+  );
 }
+
