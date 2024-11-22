@@ -28,7 +28,8 @@ const Login= () => {
 
 return(
     <View style={tw`flex-1 justify-center items-center  bg-gray-200 w-1/4`}> 
-    <text>testing </text>
+    <Text>testing </Text>
+    
     <Text style={tw`text-2xl font-bold mb-10`}>LOG IN</Text>
 
     <View style={tw` mt-3 p-4 shadow  bg-gray-100 rounded-lg w-4/5`} >
