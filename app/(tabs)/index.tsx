@@ -32,7 +32,7 @@ const developers = [
   {
     name: "Tuntufye Samuel Chihana",
     info: "Active Developer.",
-    photo: "https://via.placeholder.com/100",
+    photo: require("./assets/images/Samuel.png"),
   },
 ];
 
