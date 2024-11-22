@@ -6,17 +6,17 @@ const developers = [
   {
     name: "Walunji Kumwenda",
     info: "Lead Full-Stack Developer.",
-    photo: require("./assets/images/Walunji.jpg"), 
+    photo: "https://via.placeholder.com/100", 
   },
   {
     name: "Chipulumutso Phiri",
     info: "Passionate UI/UX Designer.",
-    photo: require(""),
+    photo: "https://via.placeholder.com/100",
   },
   {
     name: "Ronald Longwe",
     info: "Focused Full-Stack Developer.",
-    photo: require("./assets/images/Ronald_Longwe.jpg"),
+    photo: "https://via.placeholder.com/100",
   },
   {
     name: "Daniel Medson",
@@ -26,7 +26,7 @@ const developers = [
   {
     name: "Pleasant Ainani",
     info: "Quality UI/UX design Specialist.",
-    photo: require("./assets/images/Pleasant.jpg"),
+    photo: "https://via.placeholder.com/100",
   },
   {
     name: "Tuntufye Samuel Chihana",
@@ -45,7 +45,7 @@ const AboutUs = () => {
             style={tw`flex-row bg-white rounded-lg p-4 mb-4 shadow-md`}
           >
             <Image
-              source={developer.photo}
+              source={{ uri: developer.photo }}
               style={tw`w-24 h-24 rounded-lg mr-4`}
             />
             <View style={tw`flex-1 justify-center`}>
