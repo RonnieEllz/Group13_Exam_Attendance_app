@@ -61,7 +61,7 @@ export default function Home() {
             inputAndroid: tw`text-base py-2 px-2 text-center text-black`,
           }}
         />
-        <Link href={"/Home"} asChild>
+        <Link href={"/home/mark"} asChild>
         <TouchableOpacity style={tw`bg-black rounded p-3 mt-5`}>
           <Text style={tw`text-white text-base font-bold text-center`}>Submit</Text>
         </TouchableOpacity>
