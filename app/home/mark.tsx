@@ -43,7 +43,7 @@ export default function mark() {
         renderItem={({ item }) => (
           <View style={tw`p-3 border-b border-gray-200`}>
             <Text style={tw`text-base`}>{item.name}</Text>
-          </View>
+          </View> 
         )}
       />
 

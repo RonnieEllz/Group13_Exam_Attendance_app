@@ -1,6 +1,7 @@
 //use this in the components directory Ronald!! to call out and customise the navigation drawer
 import { View, Text, Pressable, Alert } from 'react-native';
 import React from 'react';
+import tw from 'twrnc';
 import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -19,30 +20,19 @@ export default function CustomDrawerContent(props: any) {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: '#D9D9D9' }}>
-      <View style={{padding:2}}>
-         <Text>DETAPP</Text>
+    <View style={tw`flex-1 bg-[#D9D9D9]`}>
+      <View style={tw`p-2 pl-5`}>
+         <Text style={tw`text-xl text-bold`}>DETAPP</Text>
         </View>
       <DrawerContentScrollView {...props}>
         <DrawerItemList {...props} />
       </DrawerContentScrollView>
     
-      <Pressable 
-        onPress={showAlert} 
-        style={{
-          paddingVertical: 15,
-          paddingHorizontal: 30,
-          marginBottom: bottom + 20, 
-          backgroundColor: 'black',
-          borderRadius: 15,
-          alignSelf: 'center',
-          marginVertical: 15,
-          marginTop: 40,
-          marginLeft: 25,
-        }}
-      >
-        <Text style={{ color: 'white', textAlign: 'center' }}>Log out</Text>
-      </Pressable>
+     <Pressable 
+  onPress={showAlert} 
+  style={tw`py-4 px-8 mb-5 bg-black rounded-lg self-center my-4 mt-10 ml-6`}>
+        <Text style={tw`text-white text-center`}>Log in</Text>
+    </Pressable>
     </View>
   );
 }

@@ -1,7 +1,7 @@
 import { GestureHandlerRootView, Pressable } from 'react-native-gesture-handler';
 import { Drawer } from 'expo-router/drawer';
 import CustomDraweContent from '@/components/customDraweContent';
-import { Text } from 'react-native';
+import ProfileInfo from '@/components/profileInfo';
 export default function Layout() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
@@ -11,11 +11,8 @@ export default function Layout() {
         drawerInactiveBackgroundColor:'FFFDFD',
         drawerActiveTintColor:'000000',
         drawerInactiveTintColor:'',
-        headerRight: () => (
-          <Pressable style={{
-            
-          }} onPress={() => alert('This is a button!')}><Text>Info</Text></Pressable>
-        ),
+        headerRight: () => (<ProfileInfo/>
+          ),
       }}
       drawerContent = {CustomDraweContent}>
       <Drawer.Screen
@@ -24,7 +21,9 @@ export default function Layout() {
         options={{
             drawerLabel:'Home',
             title:'Home'
+            
         }}
+        
         
         />
         <Drawer.Screen
