@@ -1,4 +1,4 @@
-import { Link } from "expo-router";
+import { router, useRouter } from "expo-router";
 import * as React from "react";
 import { useState } from "react";
 import {
@@ -6,11 +6,10 @@ import {
   View,
   TextInput,
   TouchableOpacity,
-  Image,
-  Alert,
+  Image
 } from "react-native";
 import tw from "twrnc";
-// import {loginWithEmailAndPassword} from "./Backend Login-Auth/authservice";
+ import {loginWithEmailAndPassword} from "./authservice";
 
 const Login = () => {
   const [email, setEmail] = useState(" ");
@@ -18,20 +17,21 @@ const Login = () => {
   const [error, setError] = useState("");
 
   // Handle Login with Firebase Authentication
-  /*const handleLogin = async () => {
+  const handleLogin = async () => {
   try {
     const userCredential = await loginWithEmailAndPassword(email, password);
-    alert('User logged in: ' + userCredential.user.email); // Show alert instead of console.log
+    //console.log('User logged in: ', userCredential.user.email); // Show alert instead of console.log
     setError(''); // Clear any previous errors
-    // Example: navigation.navigate('HomeScreen');
+     // Navigate to Home screen
+     router.push("/Home");
   } catch (error) {
     if (error instanceof Error) {
-      alert('Login Error: ' + error.message);  // Show error message in an alert
+      console.log('Login Error: ', error.message);  // Show error message in an alert
     } else {
-      alert('An unknown error occurred.');
+      console.log('An unknown error occurred.');
     }
   }
-};*/
+};
 
   return (
     <View style={tw`bg-gray items-center pt-20`}>
@@ -60,13 +60,13 @@ const Login = () => {
           secureTextEntry
         />
 
-        <Link href={"/Home"} asChild>
+       
           <TouchableOpacity style={tw`bg-black p-3 pl-15 pr-15 rounded-md`}>
-            <Text style={tw`text-white text-x2 font-bold text-center`}>
+            <Text onPress = {handleLogin} style={tw`text-white text-x2 font-bold text-center`}>
               continue
             </Text>
           </TouchableOpacity>
-        </Link>
+       
       </View>
     </View>
   );
