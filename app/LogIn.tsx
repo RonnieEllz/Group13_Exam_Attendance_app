@@ -61,7 +61,7 @@ const Login = () => {
         />
 
        
-          <TouchableOpacity style={tw`bg-black p-3 pl-15 pr-15 rounded-md`}>
+          <TouchableOpacity style={tw`bg-black p-3 pl-15 pr-15 rounded-full`}>
             <Text onPress = {handleLogin} style={tw`text-white text-x2 font-bold text-center`}>
               continue
             </Text>

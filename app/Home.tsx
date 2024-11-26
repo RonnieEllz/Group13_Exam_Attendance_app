@@ -12,7 +12,7 @@ export default function Home() {
   const [room, setRoom] = useState(null);
 
   return (
-    <View style={tw`flex-1 bg-lightgrey items-center`}>
+    <View style={tw`flex-1 bg-custom-gray  items-center`}>
 
       <View style={tw`flex-row justify-between items-center w-full p-4 bg-white border-b border-gray-300`}>
         <TouchableOpacity style={tw`p-2`}>
@@ -28,7 +28,7 @@ export default function Home() {
 
       <Text style={tw`text-2xl font-bold mt-5 mb-5`}>Welcome to Detapp</Text>
 
-      <View style={tw`w-4/5 bg-white rounded-lg p-5 my-2 items-center`}>
+      <View style={tw`w-4/5 bg-white rounded-lg p-5 pt-10 my-2 items-center`}>
         <RNPickerSelect
           onValueChange={(value) => setCourse(value)}
           items={[
@@ -62,7 +62,7 @@ export default function Home() {
           }}
         />
         <Link href={"/home/mark"} asChild>
-        <TouchableOpacity style={tw`bg-black rounded p-3 mt-5`}>
+        <TouchableOpacity style={tw`bg-black p-2 pl-10 pr-10 rounded-full mt-2`}>
           <Text style={tw`text-white text-base font-bold text-center`}>Submit</Text>
         </TouchableOpacity>
         </Link>
