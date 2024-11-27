@@ -6,7 +6,7 @@ import tw from "twrnc";
 const developers = [
   {
     name: "Walunji Kumwenda",
-    info: "Lead Full-Stack Developer.",
+    info: "Project Manager",
     photo: require("./assets/images/Walunji.jpg"), 
   },
   {
