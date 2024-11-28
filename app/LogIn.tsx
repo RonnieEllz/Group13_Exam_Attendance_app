@@ -1,4 +1,4 @@
-import { router, useRouter } from "expo-router";
+import { Link, router, useRouter } from "expo-router";
 import * as React from "react";
 import { useState } from "react";
 import {
@@ -36,7 +36,7 @@ const Login = () => {
   return (
     <View style={tw`bg-gray items-center pt-20`}>
       <Image
-        source={require("./home/assets/images/logo.png")}
+        source={require("../components/images/logo.png")}
         style={tw`w-25 h-25 mb-5`}
       />
       <Text style={tw`text-2xl font-bold `}>LOG IN</Text>
@@ -61,11 +61,19 @@ const Login = () => {
         />
 
        
-          <TouchableOpacity style={tw`bg-black p-3 pl-15 pr-15 rounded-full`}>
+          {/* <TouchableOpacity style={tw`bg-black p-3 pl-15 pr-15 rounded-full`}>
             <Text onPress = {handleLogin} style={tw`text-white text-x2 font-bold text-center`}>
               continue
             </Text>
+          </TouchableOpacity> */}
+          <Link href="/Home" asChild>
+          <TouchableOpacity>
+            <Text>
+              Go to Home
+            </Text>
           </TouchableOpacity>
+          
+          </Link>
        
       </View>
     </View>

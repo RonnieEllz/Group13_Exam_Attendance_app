@@ -7,7 +7,7 @@ const LandingPage = () => {
   return (
     <View style={tw`justify-center items-center bg-custom-gray p-20`}>
       <Image
-        source={require("./home/assets/images/logo.png")}
+        source={require("../components/images/logo.png")}
         style={tw`w-20 h-20 mb-4`}
       />
       <Text style={tw`text-4xl font-bold mb-4 text-center`}>

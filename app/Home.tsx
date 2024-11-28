@@ -1,5 +1,5 @@
 import ProfileInfo from '@/components/profileInfo';
-import { Link } from 'expo-router';
+import { Link, router } from 'expo-router';
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
@@ -20,10 +20,10 @@ export default function Home() {
         </TouchableOpacity>
 
         <Text style={tw`text-lg text-x2 font-bold`}>Detapp</Text>
-
-        <TouchableOpacity style={tw`p-2`}>
-          <ProfileInfo/>
+        <TouchableOpacity style={tw`p-2`} onPress={() => router.push("/about")}>
+           <ProfileInfo />
         </TouchableOpacity>
+
       </View>
 
       <Text style={tw`text-2xl font-bold mt-5 mb-5`}>Welcome to Detapp</Text>
@@ -61,7 +61,7 @@ export default function Home() {
             inputAndroid: tw`text-base py-2 px-2 text-center text-black`,
           }}
         />
-        <Link href={"/home/mark"} asChild>
+        <Link href={"/mark"} asChild>
         <TouchableOpacity style={tw`bg-black p-2 pl-10 pr-10 rounded-full mt-2`}>
           <Text style={tw`text-white text-base font-bold text-center`}>Submit</Text>
         </TouchableOpacity>

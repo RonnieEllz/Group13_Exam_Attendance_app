@@ -7,32 +7,32 @@ const developers = [
   {
     name: "Walunji Kumwenda",
     info: "Lead Full-Stack Developer.",
-    photo: require("./assets/images/Walunji.jpg"), 
+    photo: require("../components/images/Walunji.jpg"), 
   },
   {
     name: "Chipulumutso Phiri",
     info: "Passionate UI/UX Designer.",
-    photo: require("./assets/images/Chipu.jpg"),
+    photo: require("../components/images/Chipu.jpg"),
   },
   {
     name: "Ronald Longwe",
     info: "Focused Full-Stack Developer.",
-    photo: require("./assets/images/Ronald_Longwe.jpg"),
+    photo: require("../components/images/Ronald_Longwe.jpg"),
   },
   {
     name: "Daniel Medson",
     info: "Active Full-Stack Developer.",
-    photo: require("./assets/images/Daniel.png"),
+    photo: require("../components/images/Daniel.png"),
   },
   {
     name: "Pleasant Ainani",
     info: "Quality UI/UX design Specialist.",
-    photo: require("./assets/images/Pleasant.jpg"),
+    photo: require("../components/images/Pleasant.jpg"),
   },
   {
     name: "Tuntufye Samuel Chihana",
     info: "Active Developer.",
-    photo: require("./assets/images/Samuel.png"),
+    photo: require("../components/images/Samuel.png"),
   },
 ];
 
