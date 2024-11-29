@@ -16,7 +16,7 @@ const developers = [
   },
   {
     name: "Ronald Longwe",
-    info: "Focused Full-Stack Developer.",
+    info: "Better at Designing than programming.",
     photo: require("../components/images/Ronald_Longwe.jpg"),
   },
   {

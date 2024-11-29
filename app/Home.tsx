@@ -5,11 +5,18 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import Icon from 'react-native-vector-icons/Ionicons';
 import tw from 'twrnc';
-//import SQLite from 'react-native-sqlite-storage';
 
 export default function Home() {
   const [course, setCourse] = useState(null);
   const [room, setRoom] = useState(null);
+
+  const handleSubmit = () => {
+    if (course && room) {
+      router.push('/mark');
+    } else {
+      alert('Please select both a course and a room');
+    }
+  };
 
   return (
     <View style={tw`flex-1 bg-custom-gray  items-center`}>
@@ -61,11 +68,12 @@ export default function Home() {
             inputAndroid: tw`text-base py-2 px-2 text-center text-black`,
           }}
         />
-        <Link href={"/mark"} asChild>
-        <TouchableOpacity style={tw`bg-black p-2 pl-10 pr-10 rounded-full mt-2`}>
+        <TouchableOpacity 
+          style={tw`bg-black p-2 pl-10 pr-10 rounded-full mt-2`}
+          onPress={handleSubmit}
+        >
           <Text style={tw`text-white text-base font-bold text-center`}>Submit</Text>
         </TouchableOpacity>
-        </Link>
       </View>
     </View>
   );
