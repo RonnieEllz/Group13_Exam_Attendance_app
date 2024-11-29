@@ -12,7 +12,6 @@ import { useNavigation } from "@react-navigation/native";
 import { useCameraPermissions } from "expo-camera";
 import { Link } from "expo-router";
 import { useRouter } from "expo-router";
-import Login from "./LogIn";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface Student {
@@ -87,7 +86,7 @@ export default function Mark() {
       if (savedStudents) {
         setFilteredStudents(JSON.parse(savedStudents));
       } else {
-        setFilteredStudents(students); // Initial data
+        setFilteredStudents(students); 
       }
     } catch (error) {
       console.error('Error loading students:', error);
@@ -222,7 +221,6 @@ export default function Mark() {
       <View style={tw`items-center mb-1`}>
         <Link href={"/scanner"} asChild>
           <TouchableOpacity
-            // disabled={!isPermissionGranted}
             style={tw`bg-black p-3 pl-10 pr-10 rounded-full`}
           >
             <Text style={tw`text-white text-xl font-bold text-center`}>
