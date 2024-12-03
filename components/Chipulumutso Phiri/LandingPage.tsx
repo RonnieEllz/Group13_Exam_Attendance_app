@@ -11,7 +11,7 @@ const LandingPage = () => {
       </Text>
       
       <Text style={tw`text-lg font-semibold mb-2 text-center`}>
-        Exam attendance management that empowers your workforce
+        Exam attendance management that empowers Your Workforce
       </Text>
 
       <Text style={tw`text-base text-center mb-10`}>
